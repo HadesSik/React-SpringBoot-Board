@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: "c9kdtZ4l6AgUTt1OOtC5abItOTlzrB/gYdnvGqz8kgXV/TVFdGh7jRjc+97KIOxU"
-    username: "osiojoU9ky18vV8lwyzBzg=="
-    password: "Z8FbuaKCyjOJkpUSOZo5ZQ=="
+    url: "c9kdtZ4l6AgUTt1OOtC5aZGKBbTz/gB2ajf7uY98PHhLAm4CFk4QapzvbCYUXPrI"
+    username: "kzFgh/OxvV8sA6UPnmKRiw=="
+    password: "1JQrJLS5kCF2sbM9L3mT5w=="
   http:
     encoding:
       charset:    UTF-8
@@ -13,7 +13,7 @@ spring:
       suffix:     .jsp
       
 server:
-  port : 9080
+  port : 8081
   tomcat:
     uri-encoding: UTF-8
     

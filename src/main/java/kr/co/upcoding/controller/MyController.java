@@ -13,26 +13,23 @@ import kr.co.upcoding.vo.TestVO;
  
 @Controller
 public class MyController {
-	
-	@Autowired
-	TestMapper testMapper;
+
  
-    @GetMapping("/{name}.html")
-    public String page(@PathVariable String name, Model model) {
-        model.addAttribute("pageName", name);
+    @GetMapping("/")
+    public String page(Model model) {
+
+        model.addAttribute("pageName", "main");
         return "page";
     }
  
     @RequestMapping(value = "/testinsert", method=RequestMethod.POST)
     public String testInsert(TestVO vo) {
-    	testMapper.testInsert(vo);
     	
     	return "sucsex";
     }
     
     @RequestMapping(value = "/testdelete", method=RequestMethod.POST)
     public String testDelete(TestVO vo) {
-    	testMapper.testDelete(vo);
     	
     	return "asf";
     }

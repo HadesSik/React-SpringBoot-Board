@@ -59,14 +59,21 @@ public class EncryptionEnvironmentPostProcessor implements EnvironmentPostProces
             System.out.print("Encrypting the data source is a recommended practice. Is the Propriety DataSource encrypted? (y/n) : ");
             String ans = sc.nextLine().toLowerCase();
 
-            if(ans.equals("n") )
-                return false;
-            if(ans.equals("y")){
-                return true;
+
+
+            try {
+                if(ans.equals("n") )
+                    return false;
+                if(ans.equals("y")){
+                    return true;
+                }
+                else {
+                    System.out.println("Please enter the correct value.");
+                }
+            } catch (NullPointerException ex){
+                System.out.println("!!!!"+ans);
             }
-            else {
-                System.out.println("Please enter the correct value.");
-            }
+
         }
 
     }

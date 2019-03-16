@@ -4,7 +4,6 @@ module.exports = {
     context: path.resolve(__dirname, 'src/main/jsx'),
     entry: {
         main: './MainPage.jsx',
-        page1: './Page1Page.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,
@@ -20,7 +19,13 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: [ '@babel/preset-env', '@babel/preset-react' ]
+                    presets: [ '@babel/preset-env', {
+                        plugins: [
+                            [
+                                "@babel/plugin-proposal-class-properties"
+                            ]
+                        ],
+                    }, '@babel/preset-react' ]
                 }
             }
         }, {
