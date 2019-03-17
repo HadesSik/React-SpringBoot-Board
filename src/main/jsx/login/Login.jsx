@@ -5,6 +5,9 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 
+import Danger from '../alert/Danger.jsx';
+import Axios from "axios/index";
+
 class Login extends React.Component {
 
     constructor(props) {
@@ -18,10 +21,33 @@ class Login extends React.Component {
         this.toggle = this.toggle.bind(this);
     };
 
+    changeValue = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+
+        console.log(this.state);
+    }
+
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
+    }
+
+    login() {
+        if(this.state.username !=="" && this.state.password !== ""){
+            Axios.post("/login", {
+                userId: this.state.userId,
+                password: this.state.password
+            })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     }
 
     render() {
@@ -36,14 +62,27 @@ class Login extends React.Component {
         return (
             <React.Fragment>
                 <ModalBT onClick={this.toggle}>{this.props.text}</ModalBT>
-                <rs.Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <rs.ModalHeader toggle={this.toggle}>Modal title</rs.ModalHeader>
+                <rs.Modal isOpen={this.state.modal} toggle={this.toggle}>
+                    <rs.ModalHeader toggle={this.toggle}>로그인 창</rs.ModalHeader>
                     <rs.ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <form>
+                            <rs.FormGroup row>
+                                <rs.Label for="username" sm="3">아이디</rs.Label>
+                                <rs.Col sm="9">
+                                    <rs.Input type="text" name="userId" onChange={this.changeValue} id="userId" placeholder="UserID" />
+                                </rs.Col>
+                            </rs.FormGroup>
+                            <rs.FormGroup row>
+                                <rs.Label for="password" sm="3">비밀번호</rs.Label>
+                                <rs.Col sm="9">
+                                    <rs.Input type="password" name="password" onChange={this.changeValue} id="password" placeholder="Password" />
+                                </rs.Col>
+                            </rs.FormGroup>
+                        </form>
                     </rs.ModalBody>
                     <rs.ModalFooter>
-                        <rs.Button color="primary" onClick={this.toggle}>Do Something</rs.Button>{' '}
-                        <rs.Button color="secondary" onClick={this.toggle}>Cancel</rs.Button>
+                        <rs.Button color="primary" onClick={this.login}>로그인</rs.Button>{' '}
+                        <rs.Button color="secondary" onClick={this.toggle}>취소</rs.Button>
                     </rs.ModalFooter>
                 </rs.Modal>
             </React.Fragment>

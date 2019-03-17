@@ -10,11 +10,36 @@ import Side from './sidemenu/Side.jsx';
 
  
 class MainPage extends React.Component {
+
+    state = {
+        choosed: 0
+    }
+
+    selCategory = (num) => {
+        this.setState({
+            choosed: num
+        })
+
+        console.log(this.state);
+    }
  
     render() {
         return (
         	<React.Fragment>
-	        	<Side/>
+                <rs.Container
+                    fluid
+                >
+                    <rs.Row>
+                        <rs.Col xs="3">
+                            <Side
+                                selCategory = {this.selCategory}
+                            />
+                        </rs.Col>
+                        <rs.Col xs="9">
+                            {this.state.choosed}
+                        </rs.Col>
+                    </rs.Row>
+                </rs.Container>
         	</React.Fragment>
         );
     }

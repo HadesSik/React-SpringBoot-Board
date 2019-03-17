@@ -4,12 +4,21 @@ import React from 'react';
 
 import * as rs from 'reactstrap';
 
+import styled from 'styled-components';
+
 import Login from '../login/Login.jsx';
-import List from '../Board/List.jsx';
+import List from '../board/category/List.jsx';
+
+
 
 class Side extends React.Component {
 
+    selCategory = (num) => {
+        this.props.selCategory(num);
+    }
+
     render() {
+
         return (
             <React.Fragment>
                 <rs.Container>
@@ -19,7 +28,9 @@ class Side extends React.Component {
                         color={"white"}
                         bg={"black"}
                     />
-                    <List />
+                    <List
+                        selCategory={this.selCategory}
+                    />
                 </rs.Container>
             </React.Fragment>
         );

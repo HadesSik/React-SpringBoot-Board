@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.upcoding.mapper.AccountMapper">
+
+    <select id="accountGet" resultType='AccountVO'>
+      Select BC_ID as bcId, BC_NAME as bcName, BC_ORDER as bcOrder from BOARD_CATEGORY
+    </select>
+
+    <delete id="testDelete" parameterType="BoardCategoryVO">
+    	Delete from Test2 where name='${name}'
+    </delete>
+
+
+</mapper>
